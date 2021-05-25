@@ -114,5 +114,135 @@
 
    
 
+
+
+
+
+##  第二章 数组
+
+> 数组是常见的数据结构
+>
+> 探索js数组的工作原理、以及它的使用场合。
+
+
+
+### 随录笔记
+
+- 数组的标准定义: 一个存储元素的线性集合(collection)，元素通过索引来任意存取， 索引index是数字，用来计算元素之间存储位置的偏移量。
+
+- 在js中的数组，被称作为对象，特殊的js对象。内部归类为数组。
+
+- 创建数组 --- []
+
+  ```
+  var numbers = [];
+  
+  还可以调用Array的构造函数创建数组
+  var numbers = new Array();
+  
+  可以为构造函数创建数组
+  var numbers = new Array(1, 2, 3, 4, 5);
+  ```
+
+- 数组中的元素不必是同一种数据类型
+
+  ```
+  var objects = [1, "Joe", true, null];
+  ```
+
+- 判断一个对象是否数组 `Array.isArray()`
+
+  ```js
+  var numbers = 3;
+  var arr = [7, 4, 1776];
+  Array.isArray(numbers); // false
+  Array.isArray(arr); // true
+  ```
+
+- 字符串生成数组
+
+  字符串对象的split()可以生成数组，常见的分隔符。如代码1
+
+- 对数组的整体性操作 浅拷贝和深拷贝
+
+  浅复制：新数组依然指向原来的数组
+
+  深复制：将原数组中的而每一个元素都复制一份到新数组中
+
+- 存取函数
+
+  js提供一组用来访问数组元素的函数，叫做存取函数，这些函数返回目标数组的某种变体。
+
+- 查找元素
+
+  indexOf() 最常用的存取函数之一，用来查找传进来的参数在目标数组中是否存在。存在返回该元素的索引，不在返回-1 代码4 
+
+
+
+​		indexOf()函数总是返回第一个与参数相同的元素的索引
+
+​		lastIndexOf()函数返回相同元素中最后一个元素的索引，如果没找到相同元素，则返回-1。
+
+
+
+
+
+### 出现过的代码
+
+1. split()
+
+   ```js
+   var sentence = "the quick brown fox jumped over the lazy dog";
+   var words = sentence.split(" ");
+   for(var i = 0; i < words.length; ++i) {
+       console.log("word" + i + ": " + words[i]);
+   }
+   ```
+
+2. 浅拷贝
+
+   ```js
+   // 浅拷贝
+   var nums = [];
+   for(var i = 0; i < 100; ++i) {
+       nums[i] = i + 1;
+   }
+   var samenums = nums;
+   nums[0] = 400;
+   console.log(samenums[0]); // 400
+   ```
+
+3. 深拷贝
+
+   ```js
+   function copy(arr1, arr2) { 
+       for(var i = 0; i < arr1.length; ++i) { 				arr2[i] = arr1[i]; 
+       } 
+   }
+   
+   var nums = []; 
+   for(var i = 0; i < 100; ++i) { 
+       nums[i] = i+1; 
+   }
+   var samenums = []; 
+   copy(nums, samenums); 
+   nums[0] = 400; 
+   console.log(samenums[0]); // 显示 1
+   ```
+
+4. indexOf()
+
+   ```JS
+   var names = ["David", "Cynthia", "Raymond", "Clayton", "Jennifer"];
+   var name = "Raymond";
+   var position = names.indexOf(name);
+   if(position >= 0) {
+   	console.log("Found" + name + " at position " + position);
+   } else {
+       console.log(name +"not found in array.")
+   }
+   ```
+
    
 
+   
